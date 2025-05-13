@@ -1,34 +1,53 @@
 class StringUtils:
     """
-    Класс с полезными утилитами для обработки и анализа строк.
+    Класс с полезными утилитами для обработки и анализа строк
     """
 
     def capitalize(self, string: str) -> str:
         """
-        Делает первую букву заглавной и возвращает измененную строку.
+        Принимает на вход текст, делает первую букву заглавной
+        и возвращает этот же текст
         Пример: `capitalize("skypro") -> "Skypro"`
         """
         return string.capitalize()
 
     def trim(self, string: str) -> str:
         """
-        Удаляет пробелы в начале строки, если они присутствуют.
+        Принимает на вход текст и удаляет пробелы в начале, если они есть
         Пример: `trim("   skypro") -> "skypro"`
         """
-        return string.lstrip(' ')
+        whitespace = " "
+        while string.startswith(whitespace):
+            string = string.removeprefix(whitespace)
+        return string
 
     def contains(self, string: str, symbol: str) -> bool:
         """
-        Проверяет наличие символа в строке.
+        Возвращает `True`, если строка содержит искомый символ
+        и `False` - если нет
+        Параметры:
+            `string` - строка для обработки
+            `symbol` - искомый символ
         Пример 1: `contains("SkyPro", "S") -> True`
         Пример 2: `contains("SkyPro", "U") -> False`
         """
-        return symbol in string
+        res = False
+        try:
+            res = string.index(symbol) > -1
+        except ValueError:
+            pass
+
+        return res
 
     def delete_symbol(self, string: str, symbol: str) -> str:
         """
-        Удаляет все вхождения указанного символа из строки.
+        Удаляет все подстроки из переданной строки
+        Параметры:
+            `string` - строка для обработки
+            `symbol` - искомый символ для удаления
         Пример 1: `delete_symbol("SkyPro", "k") -> "SyPro"`
         Пример 2: `delete_symbol("SkyPro", "Pro") -> "Sky"`
         """
-        return string.replace(symbol, "")
+        if self.contains(string, symbol):
+            string = string.replace(symbol, "")
+        return string
