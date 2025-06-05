@@ -1,7 +1,6 @@
 from selenium import webdriver
 from pages.PageCalculator import CalculatorPage
 
-
 def test_calculator():
     driver = webdriver.Chrome()
     calculator = CalculatorPage(driver)
@@ -19,4 +18,3 @@ def test_calculator():
     assert result == "15"
 
     driver.quit()
-
