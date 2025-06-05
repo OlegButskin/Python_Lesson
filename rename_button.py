@@ -7,7 +7,7 @@ driver = webdriver.Chrome()
 
 driver.get("http://uitestingplayground.com/textinput")
 
-driver.find_element(By.CSS_SELECTOR,"#newButtonName").send_keys("Skypro")
+driver.find_element(By.CSS_SELECTOR, "#newButtonName").send_keys("Skypro")
 driver.implicitly_wait(10)
 driver.find_element(By.CSS_SELECTOR, "#updatingButton").click()
-print(driver.find_element(By.CSS_SELECTOR,"#updatingButton").text)
+print(driver.find_element(By.CSS_SELECTOR, "#updatingButton").text)
